@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Пора ли тебе в отпуск?</title>
+</head>
+<body>
+    <div class="main">
+
+        <!-- Главное меню -->
+        <div class="app" v-show="showMain">
+            <div class="header">
+                <div class="header-img">
+                    <img src="img/main__menu-img.png" class="header__img-item">
+                </div>
+                <h1 class="app__header-h1">Тест на эмоциональное выгорание</h1>
+                <p class="app__header-p">Проверь не пора ли тебе в отпуск!</p>
+            </div>
+            <div class="app__body">
+                <button class="app__btn" @click="goToQuestion">
+                    <div class="app__btn-text">Начать</div>
+                </button>
+                <button class="app__btn" @click="goToResult">
+                    <div class="app__btn-text">Результат</div>
+                </button>
+                <button class="app__btn" @click="goToAuthor">
+                    <div class="app__btn-text">О приложении</div>
+                </button>
+                <button class="app__btn">
+                    <div class="app__btn-text">Звук</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Автор -->
+        <div class="app__author" v-show="showAuthor">
+            <div class="header author">
+                <h2 class="scale-h2 author-h2">Опросник выгорания Маслач (MBI)</h2>
+                <p class="text-p author-p"> - тестовая методика, предназначенная для диагностики профессионального выгорания. Создана в 1986 году Maslach и Jackson, в России адаптирована Водопьяновой, дополнена математической моделью НИПНИ им. Бехтерева.</p>
+                <h2 class="scale-h2 author-h2">Используемая музыка:</h2>
+                <p class="text-p author-p">название музыки, автор</p>
+                <h2 class="scale-h2 author-h2">Автор приложения:</h2>
+                <p class="text-p author-p">Давыдова Елизавета</p>
+                <a href="https://github.com/elfototo" class="author-a">
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                    <p class="text-p author-a-p">GitHub</p>
+                </a>
+            </div>
+            <div class="btn__replay btn__replay-author">
+                <button class="btn__replay-first" @click="goToMain"><i class="fa fa-reply" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+        <!-- Вопросы -->
+        <div class="app__questions" v-show="showQuestion">
+            <div class="header questions">
+                <div class="question__number">
+                    <div class="number">{{number+1}}</div>
+                </div>
+                <div class="questions__text scale-h2">{{questions[number][1]}}</div>
+            </div>
+            <div class="app__body">
+                <button class="app__btn" 
+                        v-for="(answer, i) in questions[number][2]" 
+                        @click="nextQuestion(questions[number][3][i])">
+                    <div class="app__btn-text">{{answer}}</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Результаты -->
+        <div class="app__results" v-show="showResult" :data-MBI="resultMBI">
+            <div class="header">
+                <div :class="'header-img header__results-'+resultMBI">
+                    <h1 class="app__results-h1">{{ getResultTitle(IntIndex) }}</h1>
+                    <img :src="'img/' + resultMBI + '.png'" class="header__img-item">
+                </div>
+            </div>
+            <div class="results__body">
+                <div class="accordion">
+                    <div class="results-item">
+                        <div class="title-flex" @click="toggleAccordion('EE')">
+                            <i class="fa" :class="{'fa-angle-right': !isOpen['EE'], 'fa-angle-down': isOpen['EE']}" aria-hidden="true"></i>
+                            <div class="">
+                                <h2 class="scale-h2">Эмоциональное истощение</h2>
+                                <h3 class="level-h3">{{ getResultScale('EE') }}</h3>
+                            </div>
+                        </div>
+                        <div class="text-p" v-show="isOpen['EE']">
+                            <p>{{ getResultText('EE') }}</p>
+                        </div>
+                    </div>
+                    <div class="results-item">
+                        <div class="title-flex"  @click="toggleAccordion('DP')">
+                            <i class="fa" :class="{'fa-angle-right': !isOpen['DP'], 'fa-angle-down': isOpen['DP']}" aria-hidden="true"></i>
+                            <div class="">
+                                <h2 class="scale-h2">Деперсонализация</h2>
+                                <h3 class="level-h3">{{ getResultScale('DP') }}</h3>
+                            </div>
+                        </div>
+                        <div class="text-p" v-show="isOpen['DP']">
+                            <p>{{ getResultText('DP') }}</p>
+                        </div>
+                    </div>
+                    <div class="results-item">
+                        <div class="title-flex" @click="toggleAccordion('RPA')">
+                            <i class="fa" :class="{'fa-angle-right': !isOpen['RPA'], 'fa-angle-down': isOpen['RPA']}" aria-hidden="true"></i>
+                            <div class="">
+                                <h2 class="scale-h2">Редукция профессионализма</h2>
+                                <h3 class="level-h3">{{ getResultScale('RPA') }}</h3>
+                            </div>
+                        </div>
+                        <div class="text-p" v-show="isOpen['RPA']">
+                            <p>{{ getResultText('RPA') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn__replay">
+                <button :class="'btn__replay-'+resultMBI" @click="goToMain"><i class="fa fa-reply" aria-hidden="true"></i></button>
+            </div>
+        </div>
+
+
+    </div>
+    
+    <script src="js/vue.js"></script>
+    <script src="js/const.js"></script>
+
+
+    <script>
+        let app = new Vue({
+            el: '.main',
+            data: {
+                showMain: true,
+                showAuthor: false,
+                showQuestion: false,
+                showResult: false,
+                number: 0,
+                score: {
+                    'EE': 0,
+                    'DP': 0,
+                    'RPA': 0,
+                },
+                totalGame: localStorage.getItem('MBItotalGame') ? JSON.parse(localStorage.getItem('MBItotalGame')) : {
+                    'EE': 0,
+                    'DP': 0,
+                    'RPA': 0,
+                },
+                isOpen: {
+                    'EE': true,
+                    'DP': false,
+                    'RPA': false
+                 },
+                totalGames: localStorage.getItem('MBItotalGames') ? localStorage.getItem('MBItotalGames') : 0,
+                IntIndex: localStorage.getItem('MBIIntIndex') ? localStorage.getItem('MBIIntIndex') : 0,
+                questions: questions,
+                result: resultMessages,
+                resultMBI: 'first'                
+            },
+            methods: {
+                goToMain() {
+                    this.showMain = true
+                    this.showAuthor = false
+                    this.showQuestion = false
+                    this.showResult = false
+                },
+                goToAuthor() {
+                    this.showMain = false
+                    this.showAuthor = true
+                    this.showQuestion = false
+                    this.showResult = false
+                },
+                goToResult(MBI) {
+                    if (this.totalGames > 0) {
+                        this.showMain = false
+                        this.showAuthor = false
+                        this.showQuestion = false
+                        this.showResult = true
+                        this.resultMBI = MBI
+                        this.setResultMBI()
+                        } else {
+                            this.goToQuestion()
+                        }
+                },
+                goToQuestion() {
+                    this.score = {
+                        'EE': 0,
+                        'DP': 0,
+                        'RPA': 0,
+                    }
+                    this.showMain = false
+                    this.showAuthor = false
+                    this.showQuestion = true
+                    this.showResult = false
+                },
+                nextQuestion(answer) {
+                    this.addValue(answer[0], answer[1])
+                    if (this.number === 21) {
+                        this.endGame()
+                    } else {
+                        this.number++
+                    }
+                },
+                addValue(scale, value) {
+                    this.score[scale]+=value;
+                },
+                endGame() {
+                    this.totalGames++;
+                    localStorage.setItem('MBItotalGames', this.totalGames)
+                    
+                    this.totalGame.EE = this.score.EE
+                    this.totalGame.DP = this.score.DP
+                    this.totalGame.RPA = this.score.RPA
+
+                    localStorage.setItem('MBItotalGame', JSON.stringify(this.totalGame))
+
+                    this.IntIndex = Math.sqrt(((this.score.EE / 54) ** 2 + (this.score.DP / 30) ** 2 + (1 - this.score.RPA / 48) ** 2) / 3);
+
+                    localStorage.setItem('MBIIntIndex', this.IntIndex)
+
+                    this.number = 0
+                    this.goToResult()
+                    this.setResultMBI()
+                                        
+                },
+                getResultTitle(intIndex) {
+                    for (let i = thresholds.length - 1; i >= 0; i--) {
+                        if (intIndex >= thresholds[i]) {
+                            return titles[i];
+                        }
+                    }
+
+                    return titles[0]; // Вернем первый заголовок, если ни одно условие не сработало
+                },
+                getResultScale(scale) {
+                    const scaleValue = this.totalGame[scale];
+
+                    const result = resultRanges[scale].find(([min, max]) => scaleValue >= min && scaleValue <= max);
+
+                    return result ? result[2] : "Некорректное значение";
+                },
+                getResultText(scale) {
+                    const scaleValue = this.totalGame[scale];
+
+                    const messages = resultMessages[scale];
+
+                    for (const { range, message } of messages) {
+                        const [low, high] = range;
+                        if (scaleValue >= low && scaleValue <= high) {
+                            return message;
+                        }
+                    }
+
+                    return "Некорректные данные"; // В случае, если данные не входят в заданные диапазоны
+                },
+                setResultMBI() {
+                    const MBIIntIndex = localStorage.getItem('MBIIntIndex') ? parseFloat(localStorage.getItem('MBIIntIndex')) : 0;
+
+                    const resultMBIValues = ['first', 'second', 'third', 'fourth'];
+
+                    for (let i = 0; i < thresholds.length; i++) {
+                        if (MBIIntIndex < thresholds[i]) {
+                            this.resultMBI = resultMBIValues[i];
+                            return;
+                        }
+                    }
+
+                    this.resultMBI = 'fourth'; // Значение по умолчанию, если MBIIntIndex выше последнего порога
+                },
+                toggleAccordion(scale) {
+                    this.isOpen[scale] = !this.isOpen[scale];
+                },
+                
+            }
+        })
+        
+    </script>
+</body>
+</html>

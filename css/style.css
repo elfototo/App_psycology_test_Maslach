@@ -1,0 +1,237 @@
+@font-face {
+    font-family: 'Raleway-Light';
+    src: url(../fonts/Raleway-Light.ttf);
+}
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url(../fonts/Raleway-Bold.ttf);
+}
+@font-face {
+    font-family: 'Raleway-Medium';
+    src: url(../fonts/Raleway-Medium.ttf);
+}
+@font-face {
+    font-family: 'Raleway-LightItalic';
+    src: url(../fonts/Raleway-LightItalic.ttf);
+}
+* {
+    box-sizing: border-box;
+}
+.body {
+    font-family: 'Raleway-Light';
+}
+.app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.header {
+    color: #4A4A4A;
+    font-family: 'Raleway-Bold';
+    text-align: center;
+}
+.header-img {
+    padding-top: 20px;
+    background-color: #84D9F6;
+    border-radius: 0 0 380px 380px;
+}
+.header__img-item {
+    padding-top: 20px;
+    height: 350px;
+    display: block;
+    margin: 0 auto;
+}
+.app__header-h1 {
+    padding: 20px 25px;
+    font-size: 41px;
+    font-weight: 700;
+    line-height: 41px;
+}
+.app__header-p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 25px;
+    padding-top: 30px;
+}
+.app__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+    height: 100%;
+}
+.app__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 245px;
+    min-height: 42px;
+    text-align: center;
+    border-radius: 20px;
+    border: 2px solid #84D9F6;
+    background-color: #fff;
+    margin: 7px auto;
+    font-family: 'Raleway-Medium';
+    color: #4A4A4A;
+}
+.app__btn:hover {
+    color: #fff;
+    background-color: #17C4E9;
+}
+
+/* Результаты */
+.app__results-h1 {
+    color: #FFF;
+    font-size: 40px;
+}
+.header__img-item {
+    height: 250px;
+}
+.title-flex {
+    display: flex;
+}
+.accordion {
+    padding: 50px 0;
+}
+.results-item {
+    max-width: 500px;
+    text-align: left;
+    margin: 0 auto;
+    padding: 10px;
+}
+.scale-h2 {
+    color: #4A4A4A;
+    font-family: 'Raleway-bold';
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25px;
+}
+.level-h3 {
+    color: #4A4A4A;
+    font-family: 'Raleway-light';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 25px;
+}
+.text-p {
+    color: #4A4A4A;
+    font-family: 'Raleway-LightItalic';
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 25px; 
+}
+i.fa-angle-down, .fa-angle-right {
+    margin-right: 10px;
+    font-size: 23px;
+    margin-bottom: 3px;
+}
+i.fa-reply {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
+.btn__replay {
+    text-align: center;
+    margin: 20px auto 30px;
+}
+.header__results-first {
+    background-color: #82EAF2;
+}
+
+.header__results-second {
+    background-color: #84F69D;
+}
+
+.header__results-third {
+    background-color: #BF8CE3;
+}
+
+.header__results-fourth {
+    background-color: #FFC36A;
+}
+.btn__replay-first {
+    padding: 15px;
+    background-color: #17C4E9;
+    border-radius: 70%;
+}
+.btn__replay-second {
+    padding: 15px;
+    background-color: #27E450;
+    border-radius: 70%;
+}
+.btn__replay-third {
+    padding: 15px;
+    background-color: #C437BB;
+    border-radius: 70%;
+}
+.btn__replay-fourth {
+    padding: 15px;
+    background-color: #FC9600;
+    border-radius: 70%;
+}
+
+/* Автор */
+.author {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.author-p {
+    margin-top: 20px;
+    font-family: 'Raleway-light';
+}
+.author-h2 {
+    font-size: 22px;
+    margin: 20px 0;
+}
+.author-a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    width: 120px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4A4A4A;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+.fa.fa-github {
+    font-size: 22px;
+    color: #fff;
+    margin-right: 10px;
+}
+.author-a-p {
+    color: #fff;
+    font-family: 'Raleway-bold';
+}
+.btn__replay-author {
+    margin-top: 100px;
+}
+
+/* Вопросы */
+.question__number {
+    padding: 20px;
+    width: 330px;
+    background-color: #84D9F6;
+    border-radius: 0 0 380px 380px;
+    margin: 0 auto;
+}
+.number {
+    color: #fff;
+    font-size: 124px;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+.questions {
+    max-width: 480px;
+    margin: 0 auto;
+}
+.questions__text {
+    text-align: left;
+    padding: 50px;
+}
