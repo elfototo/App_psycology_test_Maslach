@@ -33,7 +33,7 @@
     text-align: center;
 }
 .app__title {
-    padding-top: 20px;
+    padding: 20px;
     color: #4A4A4A;
     font-family: 'Raleway-Bold';
     text-align: center;
@@ -42,7 +42,7 @@
     padding-top: 10px;
     background-color: #84D9F6;
     border-radius: 0 0 380px 380px;
-    max-width: 400px;
+    max-width: 480px;
     margin: 0 auto;
 }
 .header__img-item {
@@ -67,7 +67,7 @@
     flex-direction: column;
     justify-content: center;
     overflow: auto;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 .app__btn {
     display: flex;
