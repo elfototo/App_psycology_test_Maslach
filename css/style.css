@@ -27,10 +27,13 @@
     justify-content: space-between;
     overflow: hidden;
 }
-.header {
+.header, .app__title  {
     color: #4A4A4A;
     font-family: 'Raleway-Bold';
     text-align: center;
+}
+.app__title {
+    padding-top: 50px;
 }
 .header-img {
     padding-top: 10px;
@@ -46,13 +49,12 @@
     font-size: 41px;
     font-weight: 700;
     line-height: 41px;
-    padding-top: 20px;
 }
 .app__header-p {
     font-size: 20px;
     font-weight: 400;
     line-height: 25px;
-    padding-top: 50px;
+    padding-top: 20px;
 }
 .app__body {
     display: flex;
