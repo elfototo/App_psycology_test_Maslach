@@ -27,13 +27,16 @@
     justify-content: space-between;
     overflow: hidden;
 }
-.header, .app__title  {
+.header {
     color: #4A4A4A;
     font-family: 'Raleway-Bold';
     text-align: center;
 }
 .app__title {
     padding-top: 50px;
+    color: #4A4A4A;
+    font-family: 'Raleway-Bold';
+    text-align: center;
 }
 .header-img {
     padding-top: 10px;
