@@ -17,7 +17,7 @@ let app = new Vue({
             'RPA': 0,
         },
         isOpen: {
-            'EE': true,
+            'EE': false,
             'DP': false,
             'RPA': false,
          },
