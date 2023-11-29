@@ -131,8 +131,9 @@
 }
 i.fa-angle-down, i.fa-angle-right {
     margin-right: 10px;
-    font-size: 23px;
+    font-size: 24px;
     margin-bottom: 3px;
+    color: #4A4A4A;
 }
 i.fa-reply {
     color: #fff;
