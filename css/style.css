@@ -42,6 +42,8 @@
     padding-top: 10px;
     background-color: #84D9F6;
     border-radius: 0 0 380px 380px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 .header__img-item {
     height: 500px;
@@ -52,6 +54,7 @@
     font-size: 41px;
     font-weight: 700;
     line-height: 41px;
+    padding: 0 10px;
 }
 .app__header-p {
     font-size: 20px;
