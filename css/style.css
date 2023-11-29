@@ -126,7 +126,7 @@
     font-weight: 300;
     line-height: 25px; 
 }
-i.fa-angle-down, .fa-angle-right {
+i.fa-angle-down, i.fa-angle-right {
     margin-right: 10px;
     font-size: 23px;
     margin-bottom: 3px;
