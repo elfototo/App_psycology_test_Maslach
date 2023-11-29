@@ -64,7 +64,7 @@
     flex-direction: column;
     justify-content: center;
     overflow: auto;
-    height: 100%;
+    margin-bottom: 100px;
 }
 .app__btn {
     display: flex;
