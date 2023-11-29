@@ -63,7 +63,7 @@
                 </div>
                 <div class="questions__text scale-h2">{{questions[number][1]}}</div>
             </div>
-            <div class="app__body">
+            <div class="app__body app__body-questions">
                 <button class="app__btn" 
                         v-for="(answer, i) in questions[number][2]" 
                         @click="nextQuestion(questions[number][3][i])">

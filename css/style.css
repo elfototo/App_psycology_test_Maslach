@@ -238,3 +238,6 @@ i.fa-reply {
     text-align: left;
     padding: 20px;
 }
+.app__body-questions {
+    padding: 0;
+}
