@@ -91,6 +91,7 @@
     font-size: 40px;
 }
 .header__img-item {
+    padding-top: 20px;
     height: 200px;
 }
 .title-flex {
