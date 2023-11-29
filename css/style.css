@@ -33,7 +33,7 @@
     text-align: center;
 }
 .app__title  {
-    padding-top: 30px;
+    padding-top: 40px;
 }
 .header-img {
     padding-top: 10px;
@@ -64,7 +64,7 @@
     flex-direction: column;
     justify-content: center;
     overflow: auto;
-    padding-top: 30px;
+    padding-top: 40px;
 }
 .app__btn {
     display: flex;
