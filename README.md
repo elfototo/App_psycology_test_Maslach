@@ -80,15 +80,10 @@ Before you begin, ensure you have the following installed:
     ```bash
     npm install -g http-server
     ```
-
-    Затем запустите сервер в папке с проектом:
-
+    
     ```bash
     http-server
     ```
-
-    Это также откроет приложение в браузере.
-
 ---
 
 ## 💡 Usage
